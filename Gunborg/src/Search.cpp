@@ -37,6 +37,10 @@
 #include <sstream>
 #include <thread>
 
+#include <windows.h>
+#include <stdio.h>
+#include <malloc.h>
+
 namespace gunborg {
 
 const int MAX_CHECK_EXTENSION = 2;
@@ -511,8 +515,9 @@ void Search::search_best_move(const Position& position, const bool white_turn, c
 	for (int depth = 1; depth <= max_depth; depth++) {
 		// moves sorted for the next depth
 		MoveList next_iteration_root_moves;
-		int* pv = new int[depth];
-
+		//int* pv = new int[depth];
+		int* pv = (int*)_alloca(sizeof(int) * depth);
+		
 		for (unsigned int i = 0; i < root_moves.size(); i++) {
 			pick_next_move(root_moves, i);
 			Move root_move = root_moves[i];
@@ -623,6 +628,7 @@ void Search::search_best_move(const Position& position, const bool white_turn, c
 	std::cout << std::endl << std::flush;
 	return;
 }
+
 
 Search::~Search() {
 }

@@ -47,11 +47,11 @@ int main(int argc, char* argv[]) {
 			<< "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n"
 			<< "This is free software, and you are welcome to redistribute it\n"
 			<< "under certain conditions; type `show c' for details.\n";
-
+	run_tests();
 	if (argc == 2 && strcmp(argv[1], "test") == 0) {
 		run_tests();
 	} else {
-		uci();
+		//uci();
 	}
 	return 0;
 }
