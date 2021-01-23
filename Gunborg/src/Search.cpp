@@ -614,7 +614,6 @@ void Search::search_best_move(const Position& position, const bool white_turn, c
 			// deliver mate or be mated
 			break;
 		}
-		delete[] pv;
 		root_moves = next_iteration_root_moves;
 	}
 	while(pondering && should_run) {
