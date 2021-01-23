@@ -282,16 +282,17 @@ inline int pop_count_sw(uint64_t b) {
 	#define pop_count(b) (__builtin_popcountll(b))
 #elif _MSC_VER
 #pragma intrinsic(_BitScanForward64)
-#pragma intrinsic(__builtin_ctzll)
 #include <intrin.h>
 	static inline int __builtin_ctzll(unsigned long long x) {
 		unsigned long ret;
-		_BitScanForward64(&ret, x);
-		return (int)ret;
+		if (_BitScanForward64(&ret, x))
+			return (int)ret;
+		return 0;
 	}
 	#define lsb_to_square(b) __builtin_ctzll(b)
-	#define msb_to_square(b) (63 -__lzcnt64(b))
-	#define pop_count(b) __popcnt(b)
+	#define msb_to_square(b) bitScanReverse(b)
+	//define msb_to_square(b) (63 -__lzcnt64(b))
+	#define pop_count(b) pop_count_sw(b)
 #else
 	#define lsb_to_square(b) bitScanForward(b)
 	#define msb_to_square(b) bitScanReverse(b)
