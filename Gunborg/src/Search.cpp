@@ -117,7 +117,7 @@ void pick_next_move(MoveList& moves, const int no_sorted_moves) {
 	std::swap(moves[no_sorted_moves], moves[max_index]);
 }
 
-int Search::capture_quiescence_eval_search(bool white_turn, int alpha, int beta, Position& position) {
+inline int Search::capture_quiescence_eval_search(bool white_turn, int alpha, int beta, Position& position) {
 	if (position.p[WHITE][KING] == 0) {
 		return white_turn ? -10000 : 10000;
 	} else if (position.p[BLACK][KING] == 0) {
