@@ -20,26 +20,24 @@
  *  Created on: Jan 11, 2014
  *      Author: Torbjörn Nilsson
  */
-
+#pragma once
 #include "Search.h"
 
-#include "board.h"
-#include "Cache.h"
-#include "eval.h"
-#include "moves.h"
-#include "util.h"
 #include <algorithm>
 #include <atomic>
 #include <chrono>
+#include <climits>
 #include <deque>
 #include <iostream>
-#include <limits.h>
 #include <sstream>
 #include <thread>
+#include "board.h"
+#include "eval.h"
+#include "moves.h"
+#include "util.h"
 
-#include <windows.h>
-#include <stdio.h>
 #include <malloc.h>
+#include <windows.h>
 
 namespace gunborg {
 
@@ -204,7 +202,7 @@ inline bool should_prune(int depth, bool white_turn, Position& position, int alp
 	return false;
 }
 
-int Search::alpha_beta(bool white_turn, int depth, int alpha, int beta, Position& position, Transposition *tt,
+inline int Search::alpha_beta(bool white_turn, int depth, int alpha, int beta, Position& position, Transposition *tt,
 		bool null_move_disabled, Move (&killers)[32][2], uint64_t (&history)[64][64], int ply, int extension) {
 	if (depth == 0) {
 		return capture_quiescence_eval_search(white_turn, alpha, beta, position);
@@ -460,7 +458,9 @@ int Search::aspiration_window_search(bool white_turn, int depth, int alpha, int 
 		bool in_check, Move (&killers)[32][2], uint64_t (&history)[64][64]) {
 	int window_size = beta - alpha;
 	while (!time_to_stop()) {
+
 		int move_score = -alpha_beta(!white_turn, depth - 1, -beta, -alpha, pos, tt, in_check, killers, history, 1, 0);
+
 		if (move_score > alpha && move_score < beta) {
 			return move_score;
 		} else {

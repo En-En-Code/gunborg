@@ -20,12 +20,11 @@
  *  Created on: Jun 16, 2013
  *      Author: Torbjörn Nilsson
  */
-
+#pragma once
 #include "eval.h"
 #include "moves.h"
 #include "magic.h"
 #include <cstdlib>
-#include <stdlib.h>
 
 uint64_t from_randoms[64];
 uint64_t to_randoms[64];

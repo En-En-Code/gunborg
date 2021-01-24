@@ -24,8 +24,6 @@
 #ifndef MAGIC_H_
 #define MAGIC_H_
 
-#include <inttypes.h>
-
 /*
  * Must be called first to initialize the attack sets
  */

@@ -28,7 +28,6 @@
 #include "Cache.h"
 #include <atomic>
 #include <chrono>
-#include <string>
 
 namespace gunborg {
 

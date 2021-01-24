@@ -20,13 +20,11 @@
  *  Created on: Jun 11, 2013
  *      Author: Torbjörn Nilsson
  */
-
-#include "board.h"
+#pragma once
 #include "eval.h"
 #include "Main.h"
 #include "moves.h"
 #include "uci.h"
-#include "util.h"
 #include "test.h"
 #include <cstring>
 #include <iomanip>

@@ -21,6 +21,7 @@
  *      Author: Torbjörn Nilsson
  */
 
+#pragma once
 #include "board.h"
 
 #ifndef CACHE_H_

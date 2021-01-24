@@ -20,7 +20,7 @@
  *  Created on: Jan 18, 2014
  *      Author: Torbjörn Nilsson
  */
-
+#pragma once
 #include "board.h"
 #include "util.h"
 #include "moves.h"
@@ -28,7 +28,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <stdlib.h>
+#include <cstdlib>
 
 std::string pvstring_from_stack(int * pv, int size) {
 	std::string pv_string;

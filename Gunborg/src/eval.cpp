@@ -20,7 +20,7 @@
  *  Created on: Jan 18, 2014
  *      Author: Torbjörn Nilsson
  */
-
+#pragma once
 #include "board.h"
 #include "eval.h"
 #include "magic.h"

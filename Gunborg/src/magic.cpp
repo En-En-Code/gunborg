@@ -20,9 +20,9 @@
  *  Created on: May 31, 2014
  *      Author: Torbjörn Nilsson
  */
+#pragma once
 #include "board.h"
 #include "magic.h"
-#include <inttypes.h>
 
 uint64_t ray_moves[8][64];
 

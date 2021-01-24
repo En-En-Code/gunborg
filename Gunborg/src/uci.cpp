@@ -20,7 +20,7 @@
  *  Created on: Jan 11, 2014
  *      Author: Torbjörn Nilsson
  */
-
+#pragma once
 #include "board.h"
 #include "moves.h"
 #include "Search.h"

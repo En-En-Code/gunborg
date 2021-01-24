@@ -25,7 +25,7 @@
 #define BOARD_H_
 
 #include <deque>
-#include <inttypes.h>
+#include <cinttypes>
 #include <vector>
 
 struct Position {
