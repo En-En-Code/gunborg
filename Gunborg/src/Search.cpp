@@ -36,8 +36,7 @@
 #include "moves.h"
 #include "util.h"
 
-#include <malloc.h>
-#include <windows.h>
+#include <stdlib.h>
 
 namespace gunborg {
 
@@ -516,7 +515,8 @@ void Search::search_best_move(const Position& position, const bool white_turn, c
 		// moves sorted for the next depth
 		MoveList next_iteration_root_moves;
 		//int* pv = new int[depth];
-		int* pv = (int*)_alloca(sizeof(int) * depth);
+		//int* pv = (int*)_alloca(sizeof(int) * depth);
+		int* pv = (int*) calloc(sizeof(int), depth);
 		
 		for (unsigned int i = 0; i < root_moves.size(); i++) {
 			pick_next_move(root_moves, i);
@@ -600,9 +600,11 @@ void Search::search_best_move(const Position& position, const bool white_turn, c
 		
 		
 		if (time_to_stop()) {
+			free(pv);
 			break;
 		}
 		print_uci_info(pv, depth, alpha, tt);
+		free(pv);
 		int time_elapsed_last_depth_ms = std::chrono::duration_cast < std::chrono::milliseconds
 						> (clock.now() - start).count();
 		if (!pondering && save_time && (4 * time_elapsed_last_depth_ms) > max_think_time_ms) {
